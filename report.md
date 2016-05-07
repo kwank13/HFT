@@ -40,6 +40,7 @@ Our group hopes to implement a Forex arbitrage calculator on an FPGA using a par
 
 ##3. Design
 ###3.1 Overview
+Our system 
 ###3.2 Project Setup
 ###3.3 Hardware Architecture
 ####3.3.1 Bellman-Ford Algorithm
