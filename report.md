@@ -51,3 +51,17 @@ These numbers and characters are shown by 16x16 pixels on the screen and stored 
 
 ####3.3.3.2 Keyboard
 As mentioned before, when we press “enter” on the keyboard connected to the FPGA as peripheral, the cycle can be shown in a more readable way. This is supported by Usblib module, making communication between the peripheral (keyboard) and the FPGA. Four keys are defined “esc”, “enter”, “upshift” and “downshift”. When the software built in the arm processor receives those four keys, it will transmit corresponding data to the FPGA via Avalon Bus as what we did in lab3 and to indicate the operation shown on the screen. When in the cycle we find out, “enter” gives us the name of each currencies and shown in the middle of the screen. When we are in the “enter” state, only “esc” can be responded and exit to the state before the “enter” state, and we can choose the cycle via pressing “upshift” and “downshift” keys.
+
+##4 Conclusions
+###4.1 Results
+
+###4.2 Lessons Learned
+
+###4.3 Future Goals
+In the future we would like to be able to fully integrate our project to run on the live FOREX market. This would involve modifying our project to be able to receive live FOREX data and to be able to act on arbitrage opportunities when they arise.
+
+Unfortunately, we did not have an opportunity to test with real data because real-time FOREX data is hard to get without paying for access to it. We instead opted to use historical data stored in a .csv file and stream it over to the FPGA.  To work in a live environment, we will have to modify our software to pull data directly from a live stream before sending it to the FPGA as opposed to reading from a file.  This should not be too difficult and most FOREX brokers provide APIs to do this. 
+
+We also need to change our program to let it act on arbitrage opportunities. Currently we only output the appropriate currency cycle to the screen by using the hardware to send data over the VGA port. In addition to this, we also want our project to be able to send buy and sell requests to a trader. We would probably need to modify the FPGA to send cycle to the software via serial or USB.  The software could then interface with a trader’s API and make trades to take advantage of the arbitrage opportunity.
+
+Our project performs fairly quickly, but there is still room for improvement.  We believe that we can still cut down on the amount of cycles our program needs to run, which will give a small boost in performance. More importantly, we can get greater speeds by parallelizing the Bellman-Ford algorithm. Although we initially based our project on a paper parallelizing Bellman-Ford on a FPGA, our own implementation ended up mostly serial.  A parallel Bellman-Ford algorithm would allow us to take greater advantage of running the project on a FPGA.
