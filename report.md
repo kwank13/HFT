@@ -55,9 +55,11 @@ As mentioned before, when we press “enter” on the keyboard connected to the 
 ##4 Conclusions
 ###4.1 Results
 We were able to successfully detect negative weight cycles with our project using test graphs that we created. We tested using graphs with up to seven nodes, but there is no reason to believe that there will be any problems scaling up to the full 66 nodes.
+
             <a couple pictures of different node graphs>
 
 Our project is also able to detect multiple negative cycles within a graph.
+
                     <multi cycle pic>
 
 This is important because we want to be able to see all arbitrage opportunities at a given moment, not just the cycle with the most negative weight.
