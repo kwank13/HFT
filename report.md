@@ -54,8 +54,26 @@ As mentioned before, when we press “enter” on the keyboard connected to the 
 
 ##4 Conclusions
 ###4.1 Results
+We were able to successfully detect negative weight cycles with our project using test graphs that we created. We tested using graphs with up to seven nodes, but there is no reason to believe that there will be any problems scaling up to the full 66 nodes.
+            <a couple pictures of different node graphs>
+
+Our project is also able to detect multiple negative cycles within a graph.
+                    <multi cycle pic>
+
+This is important because we want to be able to see all arbitrage opportunities at a given moment, not just the cycle with the most negative weight.
+
+We did test our project with some historical data we were able to find, but unfortunately were not able find any negative cycles
+
+                <still from historical data test>
+
+However, given our results from smaller tests, we believe it is more likely that the historical data we used simply did not have any arbitrage opportunities. Our initial research had said that these opportunities were fairly uncommon. In this case, the project should not show any output because there are no negative cycles.
+
+Overall, we feel our results are promising. Our project can successfully detect multiple negative cycles within a graph and display the corresponding nodes that make up the cycle. We can also stream in historical data from the FOREX market and run it through the FPGA. We estimate the time our project takes to detect a negative cycle is roughly 20ms. This is only a little slower than actual HFT platforms and there is still room to tweak our hardware to get better performance.
 
 ###4.2 Lessons Learned
+The main takeaway we had from this project was that timing diagrams are very important, especially with memory access. We had issues with our project that seemed impossible to solve until we used a tool to generate timing diagrams. Once we looked at those, it was easy to see where our project was out of sync. 
+
+We also learned that memory is a major constraint on the FPGA. We initially thought that memory would be as simple as using one of the pre-made templates in Quartus.  However, properly writing and reading from memory quickly became our main focus.
 
 ###4.3 Future Goals
 In the future we would like to be able to fully integrate our project to run on the live FOREX market. This would involve modifying our project to be able to receive live FOREX data and to be able to act on arbitrage opportunities when they arise.
